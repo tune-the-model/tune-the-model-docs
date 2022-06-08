@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quickstart tutorial &#8212; Model One 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting your API Key" href="api_key.html" />
+    <link rel="prev" title="Model One: simple, yet powerful, text AI" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="quickstart-tutorial">
+<h1>Quickstart tutorial<a class="headerlink" href="#quickstart-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This guide will walk you through the basics of using the Model One Python SDK for solving text generation and classification problems. We have fine-tuned models to show you some possible applications, such as wine description generation, financial sentiment, cyber-bullying detection and review sentiment.</p>
+<div class="section" id="install-package">
+<h2>Install package<a class="headerlink" href="#install-package" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">model-one</span></code></p>
+</div>
+<div class="section" id="set-up-public-key">
+<h2>Set up public key<a class="headerlink" href="#set-up-public-key" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
+
+
+<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="s1">&#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="take-a-look-at-pretrained-models">
+<h2>Take a look at pretrained models<a class="headerlink" href="#take-a-look-at-pretrained-models" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">models</span><span class="p">())</span>
+
+<span class="n">GENERATOR_TASKS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;winemag&quot;</span><span class="p">:</span> <span class="s2">&quot;f9cab2f96d9e65a125264702489cad7a&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">CLASSIFIER_TASKS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;amazon_polarity&quot;</span><span class="p">:</span> <span class="s2">&quot;13419a9f17bf52cc48f009a512a99735&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cyberbullying_tweets&quot;</span><span class="p">:</span> <span class="s2">&quot;9323f9dbc976ea5dc6c8272eb90742f9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;financial_sentiment&quot;</span><span class="p">:</span> <span class="s2">&quot;1ec02ac96b3e3cd7762bf1e6e2955eb3&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-wine-description-by-names">
+<h2>Generate wine description by names<a class="headerlink" href="#generate-wine-description-by-names" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">winemag</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">GENERATOR_TASKS</span><span class="p">[</span><span class="s2">&quot;winemag&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">winemag</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;Italy, Valpolicella classico 2013&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="detect-cyber-bullying">
+<h2>Detect cyber bullying<a class="headerlink" href="#detect-cyber-bullying" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cyberbullying_tweets</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">CLASSIFIER_TASKS</span><span class="p">[</span><span class="s2">&quot;cyberbullying_tweets&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cyberbullying_tweets</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;take that Kat &amp;amp; Andre, scum of the earth LOL #mkr. I just can&#39;t with them... #mykitchenrules&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="financial-sentiment-analysis">
+<h2>Financial sentiment analysis<a class="headerlink" href="#financial-sentiment-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">financial_sentiment</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">CLASSIFIER_TASKS</span><span class="p">[</span><span class="s2">&quot;financial_sentiment&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;Royal Dutch Shell to Buy BG Group for Nearly $70 Billion&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;France raises concerns over proposed LSE-Deutsche Boerse deal&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;Pertti Ervi is independent from the Company and its major shareholders&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="full-example">
+<h2>Full example<a class="headerlink" href="#full-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
+
+
+<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="s1">&#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E&#39;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">models</span><span class="p">())</span>
+
+<span class="n">GENERATOR_TASKS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;winemag&quot;</span><span class="p">:</span> <span class="s2">&quot;f9cab2f96d9e65a125264702489cad7a&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">CLASSIFIER_TASKS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;amazon_polarity&quot;</span><span class="p">:</span> <span class="s2">&quot;13419a9f17bf52cc48f009a512a99735&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cyberbullying_tweets&quot;</span><span class="p">:</span> <span class="s2">&quot;9323f9dbc976ea5dc6c8272eb90742f9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;financial_sentiment&quot;</span><span class="p">:</span> <span class="s2">&quot;1ec02ac96b3e3cd7762bf1e6e2955eb3&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="n">winemag</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">GENERATOR_TASKS</span><span class="p">[</span><span class="s2">&quot;winemag&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">winemag</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;Italy, Valpolicella classico 2013&#39;</span><span class="p">))</span>
+
+<span class="n">cyberbullying_tweets</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">CLASSIFIER_TASKS</span><span class="p">[</span><span class="s2">&quot;cyberbullying_tweets&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cyberbullying_tweets</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;take that Kat &amp;amp; Andre, scum of the earth LOL #mkr. I just can&#39;t with them... #mykitchenrules&quot;</span><span class="p">))</span>
+
+<span class="n">financial_sentiment</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">CLASSIFIER_TASKS</span><span class="p">[</span><span class="s2">&quot;financial_sentiment&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;Royal Dutch Shell to Buy BG Group for Nearly $70 Billion&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;France raises concerns over proposed LSE-Deutsche Boerse deal&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;Pertti Ervi is independent from the Company and its major shareholders&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Model One</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-package">Install package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-public-key">Set up public key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#take-a-look-at-pretrained-models">Take a look at pretrained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-wine-description-by-names">Generate wine description by names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detect-cyber-bullying">Detect cyber bullying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#financial-sentiment-analysis">Financial sentiment analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#full-example">Full example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_key.html">Getting your API Key</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classifier.html">Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Model One: simple, yet powerful, text AI</a></li>
+      <li>Next: <a href="api_key.html" title="next chapter">Getting your API Key</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Model One.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/quickstart.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
