@@ -14,7 +14,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Classifier" href="classifier.html" />
+    <link rel="prev" title="Generator" href="generator.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,28 +35,72 @@
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>You can interact with the API through HTTP requests from any language, via our official Python bindings.</p>
-<p>To install the official Python bindings, run the following command:</p>
+<p>You can interact with the API through HTTP requests from any language or via our official Python SDK.</p>
+<p>To install the Python SDK, run the following command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">model-one</span></code></p>
 </div>
-<div class="section" id="endpoint">
-<h2>Endpoint<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h2>
-<p>todo</p>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>The Model One API uses API keys for authentication. Follow <a class="reference internal" href="api_key.html"><span class="doc">this guide</span></a> to obtain the API key you’ll use in your requests. Your API key is a secret. Please, do not share it with others.</p>
 </div>
-<div class="section" id="auth">
-<h2>Auth<a class="headerlink" href="#auth" title="Permalink to this headline">¶</a></h2>
-<p>The Model One API uses API keys for authentication. Visit <a class="reference external" href="https://model-one.ai">Model One’s landing page</a> to obtain the API key you’ll use in your requests.</p>
-<p>Your API key is a secret. Please, do not share it with others.</p>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>List, create, delete and describe the fine-tuned models.</p>
+<div class="section" id="list-models">
+<h3>List models<a class="headerlink" href="#list-models" title="Permalink to this headline">¶</a></h3>
+<p>Lists the available fine-tuned models, and provides basic information about each one such as the owner and availability.</p>
+<p>Curl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;https://api.todo.ml/v0/models&quot;</span> <span class="se">\</span>
+  -H <span class="s2">&quot;Authorization: &lt;insert your API key here&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
+
+
+<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MODEL_ONE_KEY&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">models</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-model">
+<h3>Create model<a class="headerlink" href="#create-model" title="Permalink to this headline">¶</a></h3>
+<p>Creates a new model.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X <span class="s1">&#39;POST&#39;</span> <span class="se">\</span>
+  <span class="s1">&#39;https://api.beyond.ml/v0/models&#39;</span> <span class="se">\</span>
+  -H <span class="s1">&#39;accept: application/json&#39;</span> <span class="se">\</span>
+  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+  -d <span class="s1">&#39;{</span>
+<span class="s1">    &quot;model_type&quot;: &quot;string&quot;,</span>
+<span class="s1">    &quot;model_params&quot;: {</span>
+<span class="s1">      &quot;train_iters&quot;: 0,</span>
+<span class="s1">      &quot;num_classes&quot;: 0</span>
+<span class="s1">    },</span>
+<span class="s1">    &quot;name&quot;: &quot;string&quot;</span>
+<span class="s1">  }&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-model-s-status">
+<h3>Get model’s status<a class="headerlink" href="#get-model-s-status" title="Permalink to this headline">¶</a></h3>
+<p>Fetches a model instance, providing information about the model such as .</p>
+<p>Curl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;https://api.todo.ml/v0/models/&lt;model_name&gt;/status&quot;</span> <span class="se">\</span>
+  -H <span class="s2">&quot;Authorization: &lt;insert your API key here&gt;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-model">
+<h3>Delete model<a class="headerlink" href="#delete-model" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Create model</p></li>
+<ol class="arabic simple" start="2">
 <li><p>Upload datasets</p></li>
 <li><p>Start training</p></li>
 <li><p>Get model info, monitor progress</p></li>
 <li><p>Cancel training</p></li>
-<li><p>Delete model</p></li>
 </ol>
 </div>
 <div class="section" id="inference">
@@ -90,10 +134,17 @@
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_key.html">Getting your API Key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classifier.html">Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generator.html">Generator</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#auth">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#models">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-models">List models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-model">Create model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-model-s-status">Get model’s status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-model">Delete model</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#training">Training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inference">Inference</a></li>
 </ul>
@@ -104,7 +155,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="classifier.html" title="previous chapter">Classifier</a></li>
+      <li>Previous: <a href="generator.html" title="previous chapter">Generator</a></li>
   </ul></li>
 </ul>
 </div>

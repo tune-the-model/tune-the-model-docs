@@ -3,6 +3,8 @@ Quickstart tutorial
 
 This guide will walk you through the basics of using the Model One Python SDK for solving text generation and classification problems. We have fine-tuned models to show you some possible applications, such as wine description generation, financial sentiment, cyber-bullying detection and review sentiment.
 
+You can find the example containing the code below in the form of `a colab notebook <https://colab.research.google.com/github/beyondml/model-one-py/blob/main/playbook.ipynb>`_.
+
 Install package
 ---------------
 ``pip install --upgrade model-one``
@@ -62,10 +64,8 @@ Financial sentiment analysis
   print(financial_sentiment.classify("France raises concerns over proposed LSE-Deutsche Boerse deal"))
   print(financial_sentiment.classify("Pertti Ervi is independent from the Company and its major shareholders"))
   
-
-
-Full example
-------------
+Complete example
+----------------
 
 .. code:: python
 

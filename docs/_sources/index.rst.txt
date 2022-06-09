@@ -16,4 +16,5 @@ Powered by huge pre-trained transformer language models, Model One enables you t
    /quickstart.rst
    /api_key.rst
    /classifier.rst
+   /generator.rst
    /api_reference.rst

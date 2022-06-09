@@ -4,33 +4,86 @@ API Reference
 Introduction
 ------------
 
-You can interact with the API through HTTP requests from any language, via our official Python bindings.
+You can interact with the API through HTTP requests from any language or via our official Python SDK.
 
-To install the official Python bindings, run the following command:
+To install the Python SDK, run the following command:
 
 ``pip install --upgrade model-one``
 
-Endpoint
---------
+Authentication
+--------------
 
-todo
+The Model One API uses API keys for authentication. Follow :doc:`this guide <api_key/>` to obtain the API key you'll use in your requests. Your API key is a secret. Please, do not share it with others.
 
-Auth
-----
+Models
+------
 
-The Model One API uses API keys for authentication. Visit `Model One's landing page <https://model-one.ai>`_ to obtain the API key you'll use in your requests.
+List, create, delete and describe the fine-tuned models.
 
-Your API key is a secret. Please, do not share it with others.
+List models
+^^^^^^^^^^^
+
+Lists the available fine-tuned models, and provides basic information about each one such as the owner and availability.
+
+Curl:
+
+.. code:: bash
+
+  curl "https://api.todo.ml/v0/models" \
+    -H "Authorization: <insert your API key here>"
+
+Python:
+
+.. code:: python
+
+  import model_one
+
+
+  model_one.set_api_key(os.environ.get("MODEL_ONE_KEY"))
+  print(model_one.ModelOne.models())
+
+Create model
+^^^^^^^^^^^^
+
+Creates a new model.
+
+.. code:: bash
+
+  curl -X 'POST' \
+    'https://api.beyond.ml/v0/models' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model_type": "string",
+      "model_params": {
+        "train_iters": 0,
+        "num_classes": 0
+      },
+      "name": "string"
+    }'
+
+Get model's status
+^^^^^^^^^^^^^^^^^^
+
+Fetches a model instance, providing information about the model such as .
+
+Curl:
+
+.. code:: bash
+
+  curl "https://api.todo.ml/v0/models/<model_name>/status" \
+    -H "Authorization: <insert your API key here>"
+
+Delete model
+^^^^^^^^^^^^
 
 Training
 --------
 
-1. Create model
 2. Upload datasets
 3. Start training
 4. Get model info, monitor progress
 5. Cancel training
-6. Delete model
 
 
 Inference
