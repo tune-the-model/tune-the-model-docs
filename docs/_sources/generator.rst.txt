@@ -37,14 +37,6 @@ Let's load the dataset:
   import pandas as pd
 
 
-  model = model_one.train_generator(
-      tmpdir_factory.mktemp("models").join("generator.json"),
-      train_inputs,
-      train_outputs,
-      validation_inputs,
-      validation_outputs,
-      train_iters=10
-  )
   tdf = pd.read_csv('train.csv')
   vdf = pd.read_csv('test.csv')
 
