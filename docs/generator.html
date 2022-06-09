@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generator &#8212; Model One 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api_reference.html" />
+    <link rel="prev" title="Classifier" href="classifier.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="generator">
+<h1>Generator<a class="headerlink" href="#generator" title="Permalink to this headline">¶</a></h1>
+<p>Learn how to fine-tune a model that can generate text.</p>
+<div class="section" id="install-package">
+<h2>Install package<a class="headerlink" href="#install-package" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">model-one</span></code></p>
+</div>
+<div class="section" id="set-up-the-key">
+<h2>Set up the key<a class="headerlink" href="#set-up-the-key" title="Permalink to this headline">¶</a></h2>
+<p>In case you don’t have a key yet, please follow <a class="reference internal" href="api_key.html"><span class="doc">this guide</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
+
+
+<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MODEL_ONE_KEY&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-dataset">
+<h2>Load the dataset<a class="headerlink" href="#load-the-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The dataset consists of lines with the following fields:</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">question</span><span class="p">,</span><span class="n">answer</span>
+</pre></div>
+</div>
+<p>Let’s load the dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_generator</span><span class="p">(</span>
+    <span class="n">tmpdir_factory</span><span class="o">.</span><span class="n">mktemp</span><span class="p">(</span><span class="s2">&quot;models&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;generator.json&quot;</span><span class="p">),</span>
+    <span class="n">train_inputs</span><span class="p">,</span>
+    <span class="n">train_outputs</span><span class="p">,</span>
+    <span class="n">validation_inputs</span><span class="p">,</span>
+    <span class="n">validation_outputs</span><span class="p">,</span>
+    <span class="n">train_iters</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">tdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;train.csv&#39;</span><span class="p">)</span>
+<span class="n">vdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fine-tune-a-model">
+<h2>Fine tune a model<a class="headerlink" href="#fine-tune-a-model" title="Permalink to this headline">¶</a></h2>
+<p>A training phase typically takes a couple of hours, but for a small dataset it will be finished in around 30 minutes.</p>
+<p>Calling just one method will under the hood do the following for you: create a model, save it to the file, upload datasets and put the model in the queue for training.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_generator</span><span class="p">(</span>
+    <span class="s1">&#39;generator.json&#39;</span><span class="p">,</span>
+    <span class="n">tdf</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">],</span> <span class="n">tdf</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">],</span>
+    <span class="n">vdf</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">],</span> <span class="n">vdf</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">wait_for_training_finish</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="infer">
+<h2>Infer<a class="headerlink" href="#infer" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">the_answer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;The Answer to the Ultimate Question of Life, the Universe, and Everything&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">the_answer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-example">
+<h2>Complete example<a class="headerlink" href="#complete-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="n">tdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;train.csv&#39;</span><span class="p">)</span>
+<span class="n">vdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_generator</span><span class="p">(</span>
+    <span class="s1">&#39;filename.json&#39;</span><span class="p">,</span>
+    <span class="n">tdf</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">],</span> <span class="n">tdf</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">],</span>
+    <span class="n">vdf</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">],</span> <span class="n">vdf</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">wait_for_training_finish</span><span class="p">()</span>
+
+<span class="n">the_answer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;The Answer to the Ultimate Question of Life, the Universe, and Everything&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">the_answer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Model One</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_key.html">Getting your API Key</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classifier.html">Classifier</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-package">Install package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-the-key">Set up the key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-dataset">Load the dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fine-tune-a-model">Fine tune a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#infer">Infer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complete-example">Complete example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="classifier.html" title="previous chapter">Classifier</a></li>
+      <li>Next: <a href="api_reference.html" title="next chapter">API Reference</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Model One.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/generator.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -92,7 +92,7 @@ Find the best threshold
   print("Best F1-Score: ", np.max(f1_scores))
 
 
-Full example
+Complete example
 ------------
 
 .. code:: python
