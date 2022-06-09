@@ -7,17 +7,14 @@ Install package
 ---------------
 ``pip install --upgrade model-one``
 
-Set up the key
---------------
+Set up the key to environment variable
+--------------------------------------
 
 In case you don't have a key yet, please follow :doc:`this guide <api_key/>`.
 
-.. code:: python
+.. code:: bash
 
-  import model_one
-
-
-  model_one.set_api_key(os.environ.get("MODEL_ONE_KEY"))
+  export BEYONDML_API_KEY=<insert your API key here>
 
 Load TweetEval irony detection dataset
 --------------------------------------
@@ -93,7 +90,7 @@ Find the best threshold
 
 
 Complete example
-------------
+----------------
 
 .. code:: python
 
@@ -105,7 +102,7 @@ Complete example
   import model_one
 
 
-  model_one.set_api_key(os.environ.get("MODEL_ONE_KEY"))
+  model_one.set_api_key(os.environ.get("BEYONDML_API_KEY"))
 
 
   dataset = load_dataset("tweet_eval", "irony")

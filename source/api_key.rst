@@ -22,45 +22,39 @@ We will try to contact you as quickly as possible. We might ask you to tell us a
 
 Once we get to know each other, we'll send you your API key. Welcome to Model One!
 
-Test your API key
------------------
+Test your API key using curl
+----------------------------
 
-- Using curl:
+.. code:: bash
 
-  .. code:: bash
-  
-    $ curl --url "https://api.todo.ml/v0/models" --header "Authorization: <insert your API key here>"
+  $ curl --url "https://api.beyond.ml/v0/models" --header "Authorization: <insert your API key here>"
 
-  .. code::
+.. code::
 
-    {"models": []}
-
-- Using Python:
-
-  .. code:: python
-
-     import requests
-     requests.get('https://api.todo.ml/v0/models', headers={'Authorization': '<insert your API key here>'}).json()
-
-  .. code:: 
-
-      {'models': []}
+  {"models": []}
 
 If you run into any problems, please write to `support@todo.ml <mailto:support@todo.ml>`_
+
+Set up the key to environment variable
+--------------------------------------
+
+.. code:: bash
+
+  export BEYONDML_API_KEY=<insert your API key here>
 
 Add your API key to ~/.bashrc
 -----------------------------
 
   *OS: Linux or macOS*
 
-  On Linux, run the following command; it will add the instructions to set the environment variable ``MODEL_ONE_KEY`` to your ``~/.bashrc``.
+  On Linux, run the following command; it will add the instructions to set the environment variable ``BEYONDML_API_KEY`` to your ``~/.bashrc``.
 
   .. code:: bash
   
-      echo 'export MODEL_ONE_KEY=<insert your API key here>' >>~/.bashrc
+      echo 'export BEYONDML_API_KEY=<insert your API key here>' >> ~/.bashrc
 
   On macOS, use ``.bash_profile`` instead of ``.bashrc``:
 
   .. code:: bash
   
-      echo 'export MODEL_ONE_KEY=<insert your API key here>' >>~/.bash_profile
+      echo 'export BEYONDML_API_KEY=<insert your API key here>' >> ~/.bash_profile
