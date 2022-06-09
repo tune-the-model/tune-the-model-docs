@@ -1,16 +1,18 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Classifier &#8212; Model One 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,25 +34,22 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="classifier">
-<h1>Classifier<a class="headerlink" href="#classifier" title="Permalink to this headline">¶</a></h1>
+  <section id="classifier">
+<h1>Classifier<a class="headerlink" href="#classifier" title="Permalink to this heading">¶</a></h1>
 <p>Learn how to fine-tune a model that can classify where a tweet contains irony or not.</p>
-<div class="section" id="install-package">
-<h2>Install package<a class="headerlink" href="#install-package" title="Permalink to this headline">¶</a></h2>
+<section id="install-package">
+<h2>Install package<a class="headerlink" href="#install-package" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">model-one</span></code></p>
-</div>
-<div class="section" id="set-up-the-key">
-<h2>Set up the key<a class="headerlink" href="#set-up-the-key" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="set-up-the-key-to-environment-variable">
+<h2>Set up the key to environment variable<a class="headerlink" href="#set-up-the-key-to-environment-variable" title="Permalink to this heading">¶</a></h2>
 <p>In case you don’t have a key yet, please follow <a class="reference internal" href="api_key.html"><span class="doc">this guide</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
-
-
-<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MODEL_ONE_KEY&quot;</span><span class="p">))</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">BEYONDML_API_KEY</span><span class="o">=</span>&lt;insert your API key here&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="load-tweeteval-irony-detection-dataset">
-<h2>Load TweetEval irony detection dataset<a class="headerlink" href="#load-tweeteval-irony-detection-dataset" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="load-tweeteval-irony-detection-dataset">
+<h2>Load TweetEval irony detection dataset<a class="headerlink" href="#load-tweeteval-irony-detection-dataset" title="Permalink to this heading">¶</a></h2>
 <p>The dataset consists of lines with the following fields:</p>
 <ul class="simple">
 <li><p>text: a string feature containing the tweet.</p></li>
@@ -76,9 +75,9 @@
 <span class="n">validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;validation&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="fine-tune-a-model">
-<h2>Fine tune a model<a class="headerlink" href="#fine-tune-a-model" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fine-tune-a-model">
+<h2>Fine tune a model<a class="headerlink" href="#fine-tune-a-model" title="Permalink to this heading">¶</a></h2>
 <p>A training phase typically takes a couple of hours, but for such a small dataset it will be finished in around 30 minutes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_classifier</span><span class="p">(</span>
     <span class="s2">&quot;model-one-tweet_eval-irony.json&quot;</span><span class="p">,</span>
@@ -90,17 +89,17 @@
 <span class="n">classifier</span><span class="o">.</span><span class="n">wait_for_training_finish</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="infer">
-<h2>Infer<a class="headerlink" href="#infer" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="infer">
+<h2>Infer<a class="headerlink" href="#infer" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res_validation</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;validation&quot;</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]]</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="find-the-best-threshold">
-<h2>Find the best threshold<a class="headerlink" href="#find-the-best-threshold" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="find-the-best-threshold">
+<h2>Find the best threshold<a class="headerlink" href="#find-the-best-threshold" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_reportimport</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">npprecision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;validation&quot;</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">res_validation</span><span class="p">)</span>
 
@@ -110,9 +109,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best F1-Score: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="complete-example">
-<h2>Complete example<a class="headerlink" href="#complete-example" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="complete-example">
+<h2>Complete example<a class="headerlink" href="#complete-example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_reportimport</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">npprecision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;validation&quot;</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">res_validation</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
@@ -121,7 +120,7 @@
 <span class="kn">import</span> <span class="nn">model_one</span>
 
 
-<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MODEL_ONE_KEY&quot;</span><span class="p">))</span>
+<span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BEYONDML_API_KEY&quot;</span><span class="p">))</span>
 
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tweet_eval&quot;</span><span class="p">,</span> <span class="s2">&quot;irony&quot;</span><span class="p">)</span>
@@ -146,8 +145,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best F1-Score: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -171,7 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api_key.html">Getting your API Key</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Classifier</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-package">Install package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-up-the-key">Set up the key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-the-key-to-environment-variable">Set up the key to environment variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-tweeteval-irony-detection-dataset">Load TweetEval irony detection dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fine-tune-a-model">Fine tune a model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#infer">Infer</a></li>
@@ -201,7 +200,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -218,7 +217,7 @@
       &copy;2022, Model One.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -7,17 +7,14 @@ Install package
 ---------------
 ``pip install --upgrade model-one``
 
-Set up the key
---------------
+Set up the key to environment variable
+--------------------------------------
 
 In case you don't have a key yet, please follow :doc:`this guide <api_key/>`.
 
-.. code:: python
+.. code:: bash
 
-  import model_one
-
-
-  model_one.set_api_key(os.environ.get("MODEL_ONE_KEY"))
+  export BEYONDML_API_KEY=<insert your API key here>
 
 Load the dataset
 --------------------------------------
@@ -73,8 +70,6 @@ Complete example
 
   import model_one
   import pandas as pd
-
-  model_one.set_api_key('YOUR_API_KEY')
 
   tdf = pd.read_csv('train.csv')
   vdf = pd.read_csv('test.csv')
