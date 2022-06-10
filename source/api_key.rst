@@ -33,7 +33,7 @@ Test your API key using curl
 
   {"models": []}
 
-If you run into any problems, please write to `support@todo.ml <mailto:support@todo.ml>`_
+If you encounter any problems, please write to `support@model-one.ai <mailto:support@model-one.ai>`_.
 
 Set up the key to environment variable
 --------------------------------------

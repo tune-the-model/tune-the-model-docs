@@ -73,22 +73,3 @@ Curl:
 
   curl "https://api.todo.ml/v0/models/<model_name>/status" \
     -H "Authorization: <insert your API key here>"
-
-Delete model
-^^^^^^^^^^^^
-
-Training
---------
-
-2. Upload datasets
-3. Start training
-4. Get model info, monitor progress
-5. Cancel training
-
-
-Inference
----------
-
-1. Generate
-2. Score
-3. Classify
