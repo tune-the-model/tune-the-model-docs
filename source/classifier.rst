@@ -51,7 +51,7 @@ Let's load the dataset:
 Fine tune a model
 ----------------------------------
 
-A training phase typically takes a couple of hours, but for such a small dataset it will be finished in around 30 minutes.
+A training phase takes between 30 minutes and 5 hours depending on a dataset size.
 
 .. code:: python
 

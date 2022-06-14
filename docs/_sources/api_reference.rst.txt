@@ -6,10 +6,6 @@ Introduction
 
 You can interact with the API through HTTP requests from any language or via our official Python SDK.
 
-To install the Python SDK, run the following command:
-
-``pip install --upgrade model-one``
-
 Authentication
 --------------
 
@@ -25,51 +21,136 @@ List models
 
 Lists the available fine-tuned models, and provides basic information about each one such as the owner and availability.
 
-Curl:
+Request:
 
 .. code:: bash
 
-  curl "https://api.todo.ml/v0/models" \
+  curl "https://api.beyond.ml/v0/models" \
     -H "Authorization: <insert your API key here>"
 
-Python:
+Response:
 
-.. code:: python
+.. code:: text
 
-  import model_one
+  {
+   "models": [
+    {
+     "status": "Ready",
+     "model_name": "9323f9dbc976ea5dc6c8272eb90742f9",
+     "model_type": "classifier",
+     "user_name": "cyberbullying_tweets",
+     "last_updated_time": "2022-05-07 20:58:10.878585"
+    },  
+    {
+     "status": "Ready",
+     "model_name": "f9cab2f96d9e65a125264702489cad7a",
+     "model_type": "generator",
+     "user_name": "winemag-data",
+     "last_updated_time": "2022-05-06 17:15:59.202724"
+    }  
+   ]
+  }
 
+Create a model
+^^^^^^^^^^^^^^
 
-  model_one.set_api_key(os.environ.get("MODEL_ONE_KEY"))
-  print(model_one.ModelOne.models())
+.. option:: model_type <model type>
+  
+   Model type can be either generator or classifier.
 
-Create model
-^^^^^^^^^^^^
+.. option:: name <name>
 
-Creates a new model.
+   Name of a model.
+
+.. option:: model_params.num_classes <number of classes>
+
+   Creates a model for a multiclass classification task with <number of classes> classes.
+
+Request:
 
 .. code:: bash
 
   curl -X 'POST' \
     'https://api.beyond.ml/v0/models' \
-    -H 'accept: application/json' \
+    -H "Authorization: <insert your API key here>" \
+    -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
-      "model_type": "string",
+      "model_type": "classifier",
       "model_params": {
-        "train_iters": 0,
-        "num_classes": 0
+        "num_classes": 3
       },
-      "name": "string"
+      "name": "my-shiny-classifier"
     }'
+
+Response:
+
+.. code:: text
+
+ {
+  "status": "Created",
+  "model_name": "c4319ce72c6c48dfa0754faf3d083f02",
+  "model_type": "classifier",
+  "model_params": {
+   "num_classes": 3
+  },
+  "user_name": "my-shiny-classifier",
+  "last_updated_time": "2022-06-10 17:52:35.81619"
+ }
 
 Get model's status
 ^^^^^^^^^^^^^^^^^^
 
 Fetches a model instance, providing information about the model such as .
 
-Curl:
+.. option:: model_name <model name>
+
+   Id obtained from model_name field on previous step.
+
+Request:
 
 .. code:: bash
 
   curl "https://api.todo.ml/v0/models/<model_name>/status" \
     -H "Authorization: <insert your API key here>"
+
+Response:
+
+.. code:: text
+
+ {
+  "status": "Created",
+  "model_name": "c4319ce72c6c48dfa0754faf3d083f02",
+  "model_type": "classifier",
+  "model_params": {
+   "num_classes": 3
+  },
+  "user_name": "my-shiny-classifier",
+  "last_updated_time": "2022-06-10 17:52:35.81619"
+ }
+
+Delete a model
+^^^^^^^^^^^^^^
+
+Request:
+
+.. code:: bash
+
+  curl "https://api.todo.ml/v0/models/<model_name>/delete" \
+    -H "Authorization: <insert your API key here>" \
+    -X DELETE
+
+Response:
+
+.. code:: text
+
+ {
+  "status": "Created",
+  "model_name": "c4319ce72c6c48dfa0754faf3d083f02",
+  "model_type": "classifier",
+  "model_params": {
+   "num_classes": 3
+  },
+  "user_name": "my-shiny-classifier",
+  "last_updated_time": "2022-06-10 17:59:41.523746"
+ }

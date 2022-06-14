@@ -66,7 +66,7 @@
 </section>
 <section id="fine-tune-a-model">
 <h2>Fine tune a model<a class="headerlink" href="#fine-tune-a-model" title="Permalink to this heading">¶</a></h2>
-<p>A training phase typically takes a couple of hours, but for a small dataset it will be finished in around 30 minutes.</p>
+<p>A training phase takes between 30 minutes and 5 hours depending on a dataset size.</p>
 <p>Calling just one method will under the hood do the following for you: create a model, save it to the file, upload datasets and put the model in the queue for training.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_generator</span><span class="p">(</span>
     <span class="s1">&#39;generator.json&#39;</span><span class="p">,</span>
