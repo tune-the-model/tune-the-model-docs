@@ -81,12 +81,15 @@ Find the best threshold
 .. code:: python
 
   from sklearn.metrics import precision_recall_curve
-  from sklearn.metrics import classification_reportimport numpy as npprecision, recall, thresholds = precision_recall_curve(dataset["validation"]["label"], res_validation)
+  from sklearn.metrics import classification_report
+  import numpy as np
+  
+  precision, recall, thresholds = precision_recall_curve(dataset["validation"]["label"], res_validation)
 
-
-  f1_scores = 2*recall*precision/(recall+precision)threshold = thresholds[np.argmax(f1_scores)]
+  f1_scores = 2 * recall * precision / (recall + precision)
   print("Best threshold: ", threshold)
   print("Best F1-Score: ", np.max(f1_scores))
+
 
 
 Complete example
@@ -95,33 +98,35 @@ Complete example
 .. code:: python
 
   from datasets import load_dataset
-  from sklearn.metrics import classification_reportimport numpy as npprecision, recall, thresholds = precision_recall_curve(dataset["validation"]["label"], res_validation)
+  from sklearn.metrics import classification_report
   from sklearn.metrics import precision_recall_curve
   import pandas as pd
-
   import model_one
+  import numpy as np
+  import os
 
+  if __name__ == "__main__":
+      model_one.set_api_key(os.environ.get("BEYONDML_API_KEY"))
+      dataset = load_dataset("tweet_eval", "irony")
+      train = pd.DataFrame(dataset["train"])
+      validation = pd.DataFrame(dataset["validation"])
 
-  model_one.set_api_key(os.environ.get("BEYONDML_API_KEY"))
+      model = model_one.train_classifier(
+          "model-one-tweet_eval-irony.json",
+          train["text"],
+          train["label"],
+          validation["text"],
+          validation["label"],
+          train_iters=5,
+      )
 
+      model.wait_for_training_finish()
+      res_validation = [model.classify(input=text) for text in dataset["validation"]["text"]]
+      precision, recall, thresholds = precision_recall_curve(dataset["validation"]["label"], res_validation)
 
-  dataset = load_dataset("tweet_eval", "irony")
-  train = pd.DataFrame(dataset["train"])
-  validation = pd.DataFrame(dataset["validation"])
+      res = [model.classify(input=text) for text in dataset["test"]["text"]]
 
-  model = model_one.train_classifier(
-      "model-one-tweet_eval-irony.json",
-      train["text"], 
-      train["label"], 
-      validation["text"], 
-      validation["label"]
-  )
-  classifier.wait_for_training_finish()
-
-  res_validation = [model.classify(input=text) for text in dataset["validation"]["text"]]
-
-  res = [model.classify(input=text) for text in dataset["test"]["text"]]
-
-  f1_scores = 2*recall*precision/(recall+precision)threshold = thresholds[np.argmax(f1_scores)]
-  print("Best threshold: ", threshold)
-  print("Best F1-Score: ", np.max(f1_scores))
+      f1_scores = 2 * recall * precision / (recall + precision)
+      threshold = thresholds[np.argmax(f1_scores)]
+      print("Best threshold: ", threshold)
+      print("Best F1-Score: ", np.max(f1_scores))
