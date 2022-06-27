@@ -4,8 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quickstart tutorial &#8212; Model One 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -21,7 +20,6 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -30,19 +28,17 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
-  <section id="quickstart-tutorial">
+  <div class="section" id="quickstart-tutorial">
 <h1>Quickstart tutorial<a class="headerlink" href="#quickstart-tutorial" title="Permalink to this heading">¶</a></h1>
 <p>This guide will walk you through the basics of using the Model One Python SDK for solving text generation and classification problems. We have fine-tuned models to show you some possible applications, such as wine description generation, financial sentiment, cyber-bullying detection and review sentiment.</p>
 <p>You can find the example containing the code below in the form of <a class="reference external" href="https://colab.research.google.com/github/beyondml/model-one-py/blob/main/playbook.ipynb">a colab notebook</a>.</p>
-<section id="install-package">
+<div class="section" id="install-package">
 <h2>Install package<a class="headerlink" href="#install-package" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">model-one</span></code></p>
-</section>
-<section id="set-up-public-key">
+</div>
+<div class="section" id="set-up-public-key">
 <h2>Set up public key<a class="headerlink" href="#set-up-public-key" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
 
@@ -50,8 +46,8 @@
 <span class="n">model_one</span><span class="o">.</span><span class="n">set_api_key</span><span class="p">(</span><span class="s1">&#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="take-a-look-at-pretrained-models">
+</div>
+<div class="section" id="take-a-look-at-pretrained-models">
 <h2>Take a look at pretrained models<a class="headerlink" href="#take-a-look-at-pretrained-models" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">models</span><span class="p">())</span>
 
@@ -70,8 +66,8 @@
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: &#39;0e19c4acc05f968c33cd7f3a9c8b337b&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;classifier&#39;, &#39;user_name&#39;: None}, {&#39;id&#39;: &#39;13419a9f17bf52cc48f009a512a99735&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;classifier&#39;, &#39;user_name&#39;: &#39;amazon_polarity&#39;}, {&#39;id&#39;: &#39;1ec02ac96b3e3cd7762bf1e6e2955eb3&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;classifier&#39;, &#39;user_name&#39;: &#39;financial_sentiment&#39;}, {&#39;id&#39;: &#39;232403e72187d646b1de68d7f9aca371&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;classifier&#39;, &#39;user_name&#39;: None}, {&#39;id&#39;: &#39;8b6a96a9a6eb5df4a783f7deab495cf1&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;classifier&#39;, &#39;user_name&#39;: None}, {&#39;id&#39;: &#39;9323f9dbc976ea5dc6c8272eb90742f9&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;classifier&#39;, &#39;user_name&#39;: &#39;cyberbullying_tweets&#39;}, {&#39;id&#39;: &#39;f9cab2f96d9e65a125264702489cad7a&#39;, &#39;status&#39;: &#39;Ready&#39;, &#39;model_type&#39;: &#39;generator&#39;, &#39;user_name&#39;: &#39;winemag-data&#39;}]
 </pre></div>
 </div>
-</section>
-<section id="generate-wine-description-by-names">
+</div>
+<div class="section" id="generate-wine-description-by-names">
 <h2>Generate wine description by names<a class="headerlink" href="#generate-wine-description-by-names" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">winemag</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">GENERATOR_TASKS</span><span class="p">[</span><span class="s2">&quot;winemag&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">winemag</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;Italy, Valpolicella classico 2013&#39;</span><span class="p">))</span>
@@ -81,8 +77,8 @@
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Made with ripe cherry, prune and blueberry fruit, this wine is soft and creamy with a touch of sweetness. It&#39;s a rich and rich wine with a velvety texture and a long, slightly bitter finish.
 </pre></div>
 </div>
-</section>
-<section id="detect-cyber-bullying">
+</div>
+<div class="section" id="detect-cyber-bullying">
 <h2>Detect cyber bullying<a class="headerlink" href="#detect-cyber-bullying" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cyberbullying_tweets</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">CLASSIFIER_TASKS</span><span class="p">[</span><span class="s2">&quot;cyberbullying_tweets&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cyberbullying_tweets</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="s2">&quot;take that Kat &amp;amp; Andre, scum of the earth LOL #mkr. I just can&#39;t with them... #mykitchenrules&quot;</span><span class="p">))</span>
@@ -92,8 +88,8 @@
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[0.360595703]
 </pre></div>
 </div>
-</section>
-<section id="financial-sentiment-analysis">
+</div>
+<div class="section" id="financial-sentiment-analysis">
 <h2>Financial sentiment analysis<a class="headerlink" href="#financial-sentiment-analysis" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">financial_sentiment</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">ModelOne</span><span class="o">.</span><span class="n">from_id</span><span class="p">(</span><span class="n">CLASSIFIER_TASKS</span><span class="p">[</span><span class="s2">&quot;financial_sentiment&quot;</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span>
@@ -110,8 +106,8 @@ Result for &quot;France raises concerns over proposed LSE-Deutsche Boerse deal&q
 Result for &quot;Pertti Ervi is independent from the Company and its major shareholders&quot;: [0.0143356323, 0.0256347656, 0.959960938]
 </pre></div>
 </div>
-</section>
-<section id="complete-example">
+</div>
+<div class="section" id="complete-example">
 <h2>Complete example<a class="headerlink" href="#complete-example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
 
@@ -147,12 +143,11 @@ Result for &quot;Pertti Ervi is independent from the Company and its major share
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result for </span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">financial_sentiment</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -204,14 +199,6 @@ Result for &quot;Pertti Ervi is independent from the Company and its major share
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -220,8 +207,8 @@ Result for &quot;Pertti Ervi is independent from the Company and its major share
       &copy;2022, Model One.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/quickstart.rst.txt"
