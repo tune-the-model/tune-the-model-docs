@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Getting your API Key &#8212; Model One 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -20,6 +21,7 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -28,18 +30,20 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
-  <div class="section" id="getting-your-api-key">
+  <section id="getting-your-api-key">
 <h1>Getting your API Key<a class="headerlink" href="#getting-your-api-key" title="Permalink to this heading">¶</a></h1>
 <p>The Model One API uses API keys for authentication. Visit <a class="reference external" href="https://model-one.ai">Model One’s landing page</a> to obtain the API key you’ll use in your requests.</p>
 <p>Your API key is a secret. Please, do not share it with others.</p>
-<div class="section" id="request-an-api-key">
+<section id="request-an-api-key">
 <h2>Request an API Key<a class="headerlink" href="#request-an-api-key" title="Permalink to this heading">¶</a></h2>
 <p>As we are in closed beta stage, we manually review and process all new applications.</p>
 <p>In order to obtain API access, please fill out the registration form on <a class="reference external" href="https://model-one.ai">Model One’s landing page</a>.</p>
-</div>
-<div class="section" id="wait-for-a-letter-from-us">
+</section>
+<section id="wait-for-a-letter-from-us">
 <h2>Wait for a letter from us<a class="headerlink" href="#wait-for-a-letter-from-us" title="Permalink to this heading">¶</a></h2>
 <p>We will try to contact you as quickly as possible. We might ask you to tell us a little bit about yourself and about how you plan to use the API, primarily for two important reasons:</p>
 <ul class="simple">
@@ -47,8 +51,8 @@
 <li><p>We would like to make you familiar with our current limitations (there are some) if they potentially affect your use-case</p></li>
 </ul>
 <p>Once we get to know each other, we’ll send you your API key. Welcome to Model One!</p>
-</div>
-<div class="section" id="test-your-api-key-using-curl">
+</section>
+<section id="test-your-api-key-using-curl">
 <h2>Test your API key using curl<a class="headerlink" href="#test-your-api-key-using-curl" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl --url <span class="s2">&quot;https://api.beyond.ml/v0/models&quot;</span> --header <span class="s2">&quot;Authorization: &lt;insert your API key here&gt;&quot;</span>
 </pre></div>
@@ -57,31 +61,32 @@
 </pre></div>
 </div>
 <p>If you encounter any problems, please write to <a class="reference external" href="mailto:support&#37;&#52;&#48;model-one&#46;ai">support<span>&#64;</span>model-one<span>&#46;</span>ai</a>.</p>
-</div>
-<div class="section" id="set-up-the-key-to-environment-variable">
+</section>
+<section id="set-up-the-key-to-environment-variable">
 <h2>Set up the key to environment variable<a class="headerlink" href="#set-up-the-key-to-environment-variable" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">BEYONDML_API_KEY</span><span class="o">=</span>&lt;insert your API key here&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MODEL_ONE_API_KEY</span><span class="o">=</span>&lt;insert your API key here&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-your-api-key-to-bashrc">
+</section>
+<section id="add-your-api-key-to-bashrc">
 <h2>Add your API key to ~/.bashrc<a class="headerlink" href="#add-your-api-key-to-bashrc" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><p><em>OS: Linux or macOS</em></p>
-<p>On Linux, run the following command; it will add the instructions to set the environment variable <code class="docutils literal notranslate"><span class="pre">BEYONDML_API_KEY</span></code> to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export BEYONDML_API_KEY=&lt;insert your API key here&gt;&#39;</span> &gt;&gt; ~/.bashrc
+<p>On Linux, run the following command; it will add the instructions to set the environment variable <code class="docutils literal notranslate"><span class="pre">MODEL_ONE_API_KEY</span></code> to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export MODEL_ONE_API_KEY=&lt;insert your API key here&gt;&#39;</span> &gt;&gt; ~/.bashrc
 </pre></div>
 </div>
 <p>On macOS, use <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export BEYONDML_API_KEY=&lt;insert your API key here&gt;&#39;</span> &gt;&gt; ~/.bash_profile
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export MODEL_ONE_API_KEY=&lt;insert your API key here&gt;&#39;</span> &gt;&gt; ~/.bash_profile
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -131,6 +136,14 @@
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -139,8 +152,8 @@
       &copy;2022, Model One.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/api_key.rst.txt"
