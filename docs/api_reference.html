@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>API Reference &#8212; Model One 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -19,6 +20,7 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -27,22 +29,24 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
-  <div class="section" id="api-reference">
+  <section id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>You can interact with the API through HTTP requests from any language or via our official Python SDK.</p>
-</div>
-<div class="section" id="authentication">
+</section>
+<section id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">¶</a></h2>
 <p>The Model One API uses API keys for authentication. Follow <a class="reference internal" href="api_key.html"><span class="doc">this guide</span></a> to obtain the API key you’ll use in your requests. Your API key is a secret. Please, do not share it with others.</p>
-</div>
-<div class="section" id="models">
+</section>
+<section id="models">
 <h2>Models<a class="headerlink" href="#models" title="Permalink to this heading">¶</a></h2>
 <p>List, create, delete and describe the fine-tuned models.</p>
-<div class="section" id="list-models">
+<section id="list-models">
 <h3>List models<a class="headerlink" href="#list-models" title="Permalink to this heading">¶</a></h3>
 <p>Lists the available fine-tuned models, and provides basic information about each one such as the owner and availability.</p>
 <p>Request:</p>
@@ -71,8 +75,8 @@
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-a-model">
+</section>
+<section id="create-a-model">
 <h3>Create a model<a class="headerlink" href="#create-a-model" title="Permalink to this heading">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-model_type">
@@ -120,8 +124,8 @@
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="get-model-s-status">
+</section>
+<section id="get-model-s-status">
 <h3>Get model’s status<a class="headerlink" href="#get-model-s-status" title="Permalink to this heading">¶</a></h3>
 <p>Fetches a model instance, providing information about the model such as .</p>
 <dl class="std option">
@@ -148,8 +152,8 @@
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="delete-a-model">
+</section>
+<section id="delete-a-model">
 <h3>Delete a model<a class="headerlink" href="#delete-a-model" title="Permalink to this heading">¶</a></h3>
 <p>Request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;https://api.todo.ml/v0/models/&lt;model_name&gt;/delete&quot;</span> <span class="se">\</span>
@@ -170,12 +174,13 @@
 }
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -228,6 +233,14 @@
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -236,8 +249,8 @@
       &copy;2022, Model One.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/api_reference.rst.txt"

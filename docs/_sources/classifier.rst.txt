@@ -14,7 +14,7 @@ In case you don't have a key yet, please follow :doc:`this guide <api_key/>`.
 
 .. code:: bash
 
-  export BEYONDML_API_KEY=<insert your API key here>
+  export MODEL_ONE_API_KEY=<insert your API key here>
 
 Load TweetEval irony detection dataset
 --------------------------------------
@@ -106,7 +106,7 @@ Complete example
   import os
 
   if __name__ == "__main__":
-      model_one.set_api_key(os.environ.get("BEYONDML_API_KEY"))
+      model_one.set_api_key(os.environ.get("MODEL_ONE_API_KEY"))
       dataset = load_dataset("tweet_eval", "irony")
       train = pd.DataFrame(dataset["train"])
       validation = pd.DataFrame(dataset["validation"])

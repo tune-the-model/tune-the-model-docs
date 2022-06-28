@@ -40,21 +40,21 @@ Set up the key to environment variable
 
 .. code:: bash
 
-  export BEYONDML_API_KEY=<insert your API key here>
+  export MODEL_ONE_API_KEY=<insert your API key here>
 
 Add your API key to ~/.bashrc
 -----------------------------
 
   *OS: Linux or macOS*
 
-  On Linux, run the following command; it will add the instructions to set the environment variable ``BEYONDML_API_KEY`` to your ``~/.bashrc``.
+  On Linux, run the following command; it will add the instructions to set the environment variable ``MODEL_ONE_API_KEY`` to your ``~/.bashrc``.
 
   .. code:: bash
   
-      echo 'export BEYONDML_API_KEY=<insert your API key here>' >> ~/.bashrc
+      echo 'export MODEL_ONE_API_KEY=<insert your API key here>' >> ~/.bashrc
 
   On macOS, use ``.bash_profile`` instead of ``.bashrc``:
 
   .. code:: bash
   
-      echo 'export BEYONDML_API_KEY=<insert your API key here>' >> ~/.bash_profile
+      echo 'export MODEL_ONE_API_KEY=<insert your API key here>' >> ~/.bash_profile

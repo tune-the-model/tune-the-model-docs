@@ -14,7 +14,7 @@ In case you don't have a key yet, please follow :doc:`this guide <api_key/>`.
 
 .. code:: bash
 
-  export BEYONDML_API_KEY=<insert your API key here>
+  export MODEL_ONE_API_KEY=<insert your API key here>
 
 Load the dataset
 --------------------------------------
