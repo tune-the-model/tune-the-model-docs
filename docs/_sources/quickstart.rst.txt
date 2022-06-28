@@ -129,3 +129,11 @@ Complete example
       "Pertti Ervi is independent from the Company and its major shareholders",
   ):
       print("Result for \"%s\": %s" % (s, financial_sentiment.classify(s)))
+
+Next steps
+----------
+
+To learn more about finetuning our model with your data for different tasks read the following guides:
+
+* :doc:`Classification <classifier/>`.
+* :doc:`Generation <generator/>`.
