@@ -111,7 +111,7 @@ Request:
 
 .. code:: bash
 
-  curl "https://api.todo.ml/v0/models/<model_name>/status" \
+  curl "https://api.beyond.ml/v0/models/<model_name>/status" \
     -H "Authorization: <insert your API key here>"
 
 Response:
@@ -136,7 +136,7 @@ Request:
 
 .. code:: bash
 
-  curl "https://api.todo.ml/v0/models/<model_name>/delete" \
+  curl "https://api.beyond.ml/v0/models/<model_name>/delete" \
     -H "Authorization: <insert your API key here>" \
     -X DELETE
 
