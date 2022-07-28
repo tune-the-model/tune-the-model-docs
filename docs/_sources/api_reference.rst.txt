@@ -9,7 +9,7 @@ You can interact with the API through HTTP requests from any language or via our
 Authentication
 --------------
 
-The Model One API uses API keys for authentication. Follow :doc:`this guide <api_key/>` to obtain the API key you'll use in your requests. Your API key is a secret. Please, do not share it with others.
+The Tune the Model API uses API keys for authentication. Follow :doc:`this guide <api_key/>` to obtain the API key you'll use in your requests. Your API key is a secret. Please, do not share it with others.
 
 Models
 ------
@@ -25,7 +25,7 @@ Request:
 
 .. code:: bash
 
-  curl "https://api.beyond.ml/v0/models" \
+  curl "https://api.tunethemodel.com/v0/models" \
     -H "Authorization: <insert your API key here>"
 
 Response:
@@ -40,14 +40,14 @@ Response:
      "model_type": "classifier",
      "user_name": "cyberbullying_tweets",
      "last_updated_time": "2022-05-07 20:58:10.878585"
-    },  
+    },
     {
      "status": "Ready",
      "model_name": "f9cab2f96d9e65a125264702489cad7a",
      "model_type": "generator",
      "user_name": "winemag-data",
      "last_updated_time": "2022-05-06 17:15:59.202724"
-    }  
+    }
    ]
   }
 
@@ -55,7 +55,7 @@ Create a model
 ^^^^^^^^^^^^^^
 
 .. option:: model_type <model type>
-  
+
    Model type can be either generator or classifier.
 
 .. option:: name <name>
@@ -71,7 +71,7 @@ Request:
 .. code:: bash
 
   curl -X 'POST' \
-    'https://api.beyond.ml/v0/models' \
+    'https://api.tunethemodel.com/v0/models' \
     -H "Authorization: <insert your API key here>" \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
@@ -111,7 +111,7 @@ Request:
 
 .. code:: bash
 
-  curl "https://api.todo.ml/v0/models/<model_name>/status" \
+  curl "https://api.tunethemodel.com/v0/models/<model_name>/status" \
     -H "Authorization: <insert your API key here>"
 
 Response:
@@ -136,7 +136,7 @@ Request:
 
 .. code:: bash
 
-  curl "https://api.todo.ml/v0/models/<model_name>/delete" \
+  curl "https://api.tunethemodel.com/v0/models/<model_name>/delete" \
     -H "Authorization: <insert your API key here>" \
     -X DELETE
 
