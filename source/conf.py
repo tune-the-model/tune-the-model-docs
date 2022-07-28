@@ -12,14 +12,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../model-one-py'))
+sys.path.insert(0, os.path.abspath('../../tune-the-model-py'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'Model One'
-copyright = '2022, Model One'
-author = 'Model One'
+project = 'Tune the Model'
+copyright = '2022, Tune the Model'
+author = 'Tune the Model'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'

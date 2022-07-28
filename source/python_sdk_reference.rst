@@ -1,10 +1,10 @@
 Python SDK Reference
 ====================
 
-.. automodule:: model_one.cli
-    :members: train_generator, train_classifier
+.. automodule:: tune_the_model.cli
+    :members: tune_generator, tune_classifier
     :undoc-members:
 
-.. autoclass:: model_one.cli.ModelOne
+.. autoclass:: tune_the_model.cli.TuneTheModel
     :members: generate, classify
     :undoc-members:
