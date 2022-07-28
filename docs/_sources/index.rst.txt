@@ -1,9 +1,9 @@
-Model One: simple, yet powerful, text AI
+Tune the Model: simple, yet powerful, text AI
 ========================================
 
-`Model One <https://model-one.ai/>`_ allows you to create a custom text AI tailored for your application.
+`Tune the Model <https://tunethemodel.com/>`_ allows you to create a custom text AI tailored for your application.
 
-Powered by huge pre-trained transformer language models, Model One enables you to create text AI and bring it to production without investing in labelling large datasets, running tons of experiments, or setting up GPU cloud.
+Powered by huge pre-trained transformer language models, Tune the Model enables you to create text AI and bring it to production without investing in labelling large datasets, running tons of experiments, or setting up GPU cloud.
 
 .. toctree::
    :caption: Getting started

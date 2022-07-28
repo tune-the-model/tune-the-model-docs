@@ -1,18 +1,16 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Python SDK Reference &#8212; Model One 0.1 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python SDK Reference &#8212; Tune the Model 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -34,173 +32,9 @@
 
           <div class="body" role="main">
             
-  <section id="module-model_one.cli">
-<span id="python-sdk-reference"></span><h1>Python SDK Reference<a class="headerlink" href="#module-model_one.cli" title="Permalink to this heading">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="model_one.cli.train_classifier">
-<span class="sig-prename descclassname"><span class="pre">model_one.cli.</span></span><span class="sig-name descname"><span class="pre">train_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_iters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#model_one.cli.ModelOne" title="model_one.cli.ModelOne"><span class="pre">ModelOne</span></a></span></span><a class="headerlink" href="#model_one.cli.train_classifier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train the classifier according to the given training data.</p>
-<p class="rubric">Examples</p>
-<p>The following snippet shows how to train a classifier using the splitted train and validation data sets.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
-
-<span class="kn">import</span> <span class="nn">model_one</span>
-
-
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tweet_eval&quot;</span><span class="p">,</span> <span class="s2">&quot;irony&quot;</span><span class="p">)</span>
-
-<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">])</span>
-<span class="n">validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;validation&quot;</span><span class="p">])</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_classifier</span><span class="p">(</span>
-    <span class="s2">&quot;classifier.json&quot;</span><span class="p">,</span>
-    <span class="n">train</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span>
-    <span class="n">train</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span>
-    <span class="n">validation</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span>
-    <span class="n">validation</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span>
-<span class="p">)</span>
-</pre></div>
+  <div class="section" id="python-sdk-reference">
+<h1>Python SDK Reference<a class="headerlink" href="#python-sdk-reference" title="Permalink to this headline">¶</a></h1>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> – The path to a local file used to save the model info.</p></li>
-<li><p><strong>train_X</strong> – Training data.</p></li>
-<li><p><strong>train_y</strong> – Target class labels.</p></li>
-<li><p><strong>validate_X</strong> – Validation data set used for controlling the training quality.
-The poor quality of this data set may lead to over-fitting.</p></li>
-<li><p><strong>validate_y</strong> – Validation class labels.</p></li>
-<li><p><strong>train_iters</strong> – Controls the number of train iterations.</p></li>
-<li><p><strong>num_classes</strong> – Creates a model for a multiclass classification task with &lt;number of classes&gt; classes.</p></li>
-<li><p><strong>X</strong> – Training and validation data sets in one. It will be spltted with
-the help of sklearn.model_selection.train_test_split for you before
-uploading.</p></li>
-<li><p><strong>y</strong> – Class labels.</p></li>
-<li><p><strong>test_size</strong> – If float, should be between 0.0 and 1.0 and represent the
-proportion of the dataset to include in the validation split. If int,
-represents the absolute number of validation samples. If None, the value is
-set to the complement of the train size. If train_size is also None, it
-will be set to 0.25.</p></li>
-<li><p><strong>train_size</strong> – If float, should be between 0.0 and 1.0 and represent the
-proportion of the dataset to include in the train split. If int,
-represents the absolute number of train samples. If None, the value is
-automatically set to the complement of the test size.</p></li>
-<li><p><strong>shuffle</strong> – Whether or not to shuffle the data before splitting.</p></li>
-<li><p><strong>random_state</strong> – Controls the shuffling applied to the data before
-applying the split. Pass an int for reproducible output across multiple
-function calls.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The model object.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ModelOneException</strong> – If anything bad happens.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="model_one.cli.train_generator">
-<span class="sig-prename descclassname"><span class="pre">model_one.cli.</span></span><span class="sig-name descname"><span class="pre">train_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_iters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#model_one.cli.ModelOne" title="model_one.cli.ModelOne"><span class="pre">ModelOne</span></a></span></span><a class="headerlink" href="#model_one.cli.train_generator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train the generator according to the given training data.</p>
-<p class="rubric">Examples</p>
-<p>The following snippet shows how to train a generator using the splitted train and validation data sets.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">model_one</span>
-
-
-<span class="n">train_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;алый&quot;</span><span class="p">,</span> <span class="s2">&quot;альбом&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">32</span>
-<span class="n">train_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;escarlata&quot;</span><span class="p">,</span> <span class="s2">&quot;el álbum&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">32</span>
-<span class="n">validation_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;бассейн&quot;</span><span class="p">,</span> <span class="s2">&quot;бахрома&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">32</span>
-<span class="n">validation_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;libre&quot;</span><span class="p">,</span> <span class="s2">&quot;flecos&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">32</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">model_one</span><span class="o">.</span><span class="n">train_generator</span><span class="p">(</span>
-    <span class="s2">&quot;classifier.json&quot;</span><span class="p">,</span>
-    <span class="n">train_inputs</span><span class="p">,</span>
-    <span class="n">train_outputs</span><span class="p">,</span>
-    <span class="n">validation_inputs</span><span class="p">,</span>
-    <span class="n">validation_outputs</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> – The path to a local file used to save the model info.</p></li>
-<li><p><strong>train_X</strong> – Training data.</p></li>
-<li><p><strong>train_y</strong> – Target class labels.</p></li>
-<li><p><strong>validate_X</strong> – Validation data set used for controlling the training quality.
-The poor quality of this data set may lead to over-fitting.</p></li>
-<li><p><strong>validate_y</strong> – Validation class labels.</p></li>
-<li><p><strong>train_iters</strong> – Controls the number of train iterations.</p></li>
-<li><p><strong>X</strong> – Training and validation data sets in one. It will be spltted with
-the help of sklearn.model_selection.train_test_split for you before
-uploading.</p></li>
-<li><p><strong>y</strong> – Class labels.</p></li>
-<li><p><strong>test_size</strong> – If float, should be between 0.0 and 1.0 and represent the
-proportion of the dataset to include in the validation split. If int,
-represents the absolute number of validation samples. If None, the value is
-set to the complement of the train size. If train_size is also None, it
-will be set to 0.25.</p></li>
-<li><p><strong>train_size</strong> – If float, should be between 0.0 and 1.0 and represent the
-proportion of the dataset to include in the train split. If int,
-represents the absolute number of train samples. If None, the value is
-automatically set to the complement of the test size.</p></li>
-<li><p><strong>shuffle</strong> – Whether or not to shuffle the data before splitting.</p></li>
-<li><p><strong>random_state</strong> – Controls the shuffling applied to the data before
-applying the split. Pass an int for reproducible output across multiple
-function calls.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The model object.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ModelOneException</strong> – If anything bad happens.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="model_one.cli.ModelOne">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model_one.cli.</span></span><span class="sig-name descname"><span class="pre">ModelOne</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model_one.cli.ModelOne" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="model_one.cli.ModelOne.classify">
-<span class="sig-name descname"><span class="pre">classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model_one.cli.ModelOne.classify" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predicts a probability distribution over a set of classes given an input.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>input</strong> – String to classify.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A probability distribution over a set of classes.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ModelOneException</strong> – If anything bad happens.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model_one.cli.ModelOne.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model_one.cli.ModelOne.generate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates a suffix based on an input prefix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>input</strong> – Prefix for generating a suffix.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Generated text.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ModelOneException</strong> – If anything bad happens.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
 
 
           </div>
@@ -209,7 +43,7 @@ function calls.</p></li>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Model One</a></h1>
+<h1 class="logo"><a href="index.html">Tune the Model</a></h1>
 
 
 
@@ -253,7 +87,7 @@ function calls.</p></li>
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -267,10 +101,10 @@ function calls.</p></li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2022, Model One.
+      &copy;2022, Tune the Model.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
