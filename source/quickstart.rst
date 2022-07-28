@@ -1,30 +1,30 @@
 Quickstart tutorial
 ============================
 
-This guide will walk you through the basics of using the Model One Python SDK for solving text generation and classification problems. We have fine-tuned models to show you some possible applications, such as wine description generation, financial sentiment, cyber-bullying detection and review sentiment.
+This guide will walk you through the basics of using the Tune the Model Python SDK for solving text generation and classification problems. We have fine-tuned models to show you some possible applications, such as wine description generation, financial sentiment, cyber-bullying detection and review sentiment.
 
-You can find the example containing the code below in the form of `a colab notebook <https://colab.research.google.com/github/beyondml/model-one-py/blob/main/playbook.ipynb>`_.
+You can find the example containing the code below in the form of `a colab notebook <https://colab.research.google.com/drive/1kkZPXT_qRoLV0-t9RNGHQIqo8ardpbTz?usp=sharing>`_.
 
 Install package
 ---------------
-``pip install --upgrade model-one``
+``pip install --upgrade tune-the-model``
 
 Set up public key
 -----------------
 
 .. code:: python
 
-  import model_one
+  import tune_the_model as ttm
 
 
-  model_one.set_api_key('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E')
+  ttm.set_api_key('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E')
 
 Take a look at pretrained models
 --------------------------------
 
 .. code:: python
 
-  print(model_one.ModelOne.models())
+  print(ttm.TuneTheModel.models())
 
   GENERATOR_TASKS = {
       "winemag": "f9cab2f96d9e65a125264702489cad7a",
@@ -48,7 +48,7 @@ Generate wine description by names
 
 .. code:: python
 
-  winemag = model_one.ModelOne.from_id(GENERATOR_TASKS["winemag"])
+  winemag = ttm.TuneTheModel.from_id(GENERATOR_TASKS["winemag"])
   print(winemag.generate('Italy, Valpolicella classico 2013'))
 
 Result:
@@ -62,7 +62,7 @@ Detect cyber bullying
 
 .. code:: python
 
-  cyberbullying_tweets = model_one.ModelOne.from_id(CLASSIFIER_TASKS["cyberbullying_tweets"])
+  cyberbullying_tweets = ttm.TuneTheModel.from_id(CLASSIFIER_TASKS["cyberbullying_tweets"])
   print(cyberbullying_tweets.classify("take that Kat &amp; Andre, scum of the earth LOL #mkr. I just can't with them... #mykitchenrules"))
 
 Result:
@@ -76,7 +76,7 @@ Financial sentiment analysis
 
 .. code:: python
 
-  financial_sentiment = model_one.ModelOne.from_id(CLASSIFIER_TASKS["financial_sentiment"])
+  financial_sentiment = ttm.TuneTheModel.from_id(CLASSIFIER_TASKS["financial_sentiment"])
   for s in (
       "Royal Dutch Shell to Buy BG Group for Nearly $70 Billion",
       "France raises concerns over proposed LSE-Deutsche Boerse deal",
@@ -91,19 +91,19 @@ Result:
   Result for "Royal Dutch Shell to Buy BG Group for Nearly $70 Billion": [0.831054688, 0.0625, 0.106445312]
   Result for "France raises concerns over proposed LSE-Deutsche Boerse deal": [0.0148239136, 0.934082031, 0.0511169434]
   Result for "Pertti Ervi is independent from the Company and its major shareholders": [0.0143356323, 0.0256347656, 0.959960938]
-  
+
 Complete example
 ----------------
 
 .. code:: python
 
-  import model_one
+  import tune_the_model as ttm
 
 
-  model_one.set_api_key('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E')
+  ttm.set_api_key('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFkb25seSI6MSwidXNlcl9pZCI6InBsYXlib29rIn0.no2mYwFZv3q7JrARu8n3n5aAl1EJ3bPtFo7KgK32M6E')
 
 
-  print(model_one.ModelOne.models())
+  print(ttm.TuneTheModel.models())
 
   GENERATOR_TASKS = {
       "winemag": "f9cab2f96d9e65a125264702489cad7a",
@@ -116,13 +116,13 @@ Complete example
   }
 
 
-  winemag = model_one.ModelOne.from_id(GENERATOR_TASKS["winemag"])
+  winemag = ttm.TuneTheModel.from_id(GENERATOR_TASKS["winemag"])
   print(winemag.generate('Italy, Valpolicella classico 2013'))
 
-  cyberbullying_tweets = model_one.ModelOne.from_id(CLASSIFIER_TASKS["cyberbullying_tweets"])
+  cyberbullying_tweets = ttm.TuneTheModel.from_id(CLASSIFIER_TASKS["cyberbullying_tweets"])
   print(cyberbullying_tweets.classify("take that Kat &amp; Andre, scum of the earth LOL #mkr. I just can't with them... #mykitchenrules"))
 
-  financial_sentiment = model_one.ModelOne.from_id(CLASSIFIER_TASKS["financial_sentiment"])
+  financial_sentiment = ttm.TuneTheModel.from_id(CLASSIFIER_TASKS["financial_sentiment"])
   for s in (
       "Royal Dutch Shell to Buy BG Group for Nearly $70 Billion",
       "France raises concerns over proposed LSE-Deutsche Boerse deal",

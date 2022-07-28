@@ -5,7 +5,7 @@ Learn how to fine-tune a model that can generate text.
 
 Install package
 ---------------
-``pip install --upgrade model-one``
+``pip install --upgrade tune-the-model``
 
 Set up the key to environment variable
 --------------------------------------
@@ -14,7 +14,7 @@ In case you don't have a key yet, please follow :doc:`this guide <api_key/>`.
 
 .. code:: bash
 
-  export MODEL_ONE_API_KEY=<insert your API key here>
+  export TTM_API_KEY=<insert your API key here>
 
 Load the dataset
 --------------------------------------
@@ -47,7 +47,7 @@ Calling just one method will under the hood do the following for you: create a m
 
 .. code:: python
 
-  model = model_one.train_generator(
+  model = ttm.train_generator(
       'generator.json',
       tdf['inputs'], tdf['outputs'],
       vdf['inputs'], vdf['outputs']
@@ -68,13 +68,13 @@ Complete example
 
 .. code:: python
 
-  import model_one
+  import tune_the_model as ttm
   import pandas as pd
 
   tdf = pd.read_csv('train.csv')
   vdf = pd.read_csv('test.csv')
 
-  model = model_one.train_generator(
+  model = ttm.tune_generator(
       'filename.json',
       tdf['inputs'], tdf['outputs'],
       vdf['inputs'], vdf['outputs']
