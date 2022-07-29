@@ -14,7 +14,7 @@ You can find the documentation at our [Tune The Model API docs site](https://tun
 
 ## Just try
 
-We have fine-tuned several models. You can use the [notebook](https://colab.research.google.com/github/beyondml/model-one-py/blob/main/playbook.ipynb) to try them out. You can [get the token](https://tunethemodel.com) to fine tune your own model.
+We have fine-tuned several models. You can use the [notebook](https://colab.research.google.com/github/beyondml/tune-the-model-py/blob/main/playbook.ipynb) to try them out. You can [get the token](https://tunethemodel.com) to fine tune your own model.
 
 ## Getting started
 
@@ -27,10 +27,10 @@ To install the package just use `pip install -U tune-the-model`.
 ### Usage
 
 ```py
-import model_one
+import tune_the_model
 import pandas as pd
 
-model_one.set_api_key('YOUR_API_KEY')
+tune_the_model.set_api_key('YOUR_API_KEY')
 
 # load datasets
 tdf = pd.read_csv('train.csv')
@@ -38,7 +38,7 @@ vdf = pd.read_csv('test.csv')
 
 # Call one method. It will do everything for you:
 # create a model, save it to the file, upload datasets and put the model in the queue for training.
-model = model_one.train_generator(
+model = tune_the_model.train_generator(
     'filename.json',
     tdf['inputs'], tdf['outputs'],
     vdf['inputs'], vdf['outputs']

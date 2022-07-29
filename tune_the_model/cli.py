@@ -464,7 +464,7 @@ def tune_generator(
 
     .. code-block:: python
 
-        import model_one
+        import tune_the_model
 
 
         train_inputs = ["алый", "альбом"] * 32
@@ -472,7 +472,7 @@ def tune_generator(
         validation_inputs = ["бассейн", "бахрома"] * 32
         validation_outputs = ["libre", "flecos"] * 32
 
-        model = model_one.train_generator(
+        model = tune_the_model.train_generator(
             "classifier.json",
             train_inputs,
             train_outputs,
@@ -542,7 +542,7 @@ def tune_classifier(
 
         from datasets import load_dataset
 
-        import model_one
+        import tune_the_model
 
 
         dataset = load_dataset("tweet_eval", "irony")
@@ -550,7 +550,7 @@ def tune_classifier(
         train = pd.DataFrame(dataset["train"])
         validation = pd.DataFrame(dataset["validation"])
 
-        model = model_one.train_classifier(
+        model = tune_the_model.train_classifier(
             "classifier.json",
             train["text"],
             train["label"],
