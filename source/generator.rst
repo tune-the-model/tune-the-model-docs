@@ -47,7 +47,7 @@ Calling just one method will under the hood do the following for you: create a m
 
 .. code:: python
 
-  model = ttm.train_generator(
+  model = ttm.tune_generator(
       'generator.json',
       tdf['inputs'], tdf['outputs'],
       vdf['inputs'], vdf['outputs']
